@@ -166,6 +166,32 @@ public class CircularList
         }
     }
 
+    public void deletePos(int p)
+    {
+        if(p==0)
+            System.out.println("Its not a position");
+        else if(p>count())
+            System.out.println("List is not long enough");
+        else if(p==1)
+            deleteFirst();
+        else if(p==count())
+            deleteLast();
+        else
+        {
+            Node temp1,temp2;
+            temp1 = temp2 = head;
+            int t = 1;
+            while(t!=p-1)
+            {
+                temp1 = temp1.getNext();
+                temp2 = temp2.getNext();
+                t++;
+            }
+            temp2 = temp2.getNext();
+            temp1.setNext(temp2.getNext());
+        }
+    }
+
     public int count()
     {
         if(isEmpty())
@@ -195,6 +221,7 @@ public class CircularList
         obj.insertPos(50,5);
         obj.deleteLast();
         obj.deleteFirst();
+        obj.deletePos(2);
         obj.display();
         System.out.println(obj.count());
     }
