@@ -149,7 +149,21 @@ public class CircularList
 
     public void deleteLast()
     {
-        Node n = head;
+        if(isEmpty())
+            System.out.println("List is Empty");
+        else if(count()==1)
+            head = null;
+        else
+        {
+            Node n = head;
+            int k = count()-1;
+            while(k>1)
+            {
+                n = n.getNext();
+                k--;
+            }
+            n.setNext(head);
+        }
     }
 
     public int count()
@@ -178,8 +192,10 @@ public class CircularList
         obj.insertEnd(30);
         obj.insertBegin(-10);
         obj.insertEnd(40);
+        obj.insertPos(50,5);
+        obj.deleteLast();
         obj.deleteFirst();
-        System.out.println(obj.count());
         obj.display();
+        System.out.println(obj.count());
     }
 }
